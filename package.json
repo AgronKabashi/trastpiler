@@ -1,0 +1,35 @@
+{
+  "name": "trastpiler",
+  "version": "1.0.0",
+  "description": "Agnostic transpiler for ASTs",
+  "main": "lib/trastpiler.js",
+  "module": "src/index.js",
+  "scripts": {
+    "start": "rollup -c",
+    "prepublishOnly": "npm test && npm start",
+    "test": "NODE_ENV=test NODE_PATH=./src mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgronKabashi/trastpiler"
+  },
+  "keywords": [
+    "transpiler",
+    "AST"
+  ],
+  "author": "Agron Kabashi",
+  "license": "MIT",
+  "dependencies": {
+    "deepmerge": "^2.2.1"
+  },
+  "devDependencies": {
+    "@agronkabashi/eslint-config": "^1.0.2",
+    "assert": "^1.4.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "esm": "^3.0.84",
+    "mocha": "^5.2.0",
+    "rollup": "^0.66.6",
+    "sinon": "^6.3.5"
+  }
+}
