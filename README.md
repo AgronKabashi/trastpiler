@@ -50,3 +50,9 @@ function myExpression (node, { transpile, scope }) {
   return transpiledCode;
 }
 ```
+
+## Examples
+In the [examples](examples/) folder you may find some practical examples of how to build your own libraries on top of trastpiler.
+
+## Showcases
+* [jspicl](https://github.com/AgronKabashi/jspicl) - Transpiles JavaScript into a subset of LUA.

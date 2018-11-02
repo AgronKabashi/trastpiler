@@ -54,4 +54,15 @@ describe("transpile", () => {
 
     assert.equal(result, expectedResult);
   });
+
+  it("should throw and exception when an unsupported handler is deteced", () => {
+    const mappers = {};
+    const transpile = createTranspiler({ mappers });
+
+    assert.throws(() => {
+      transpile({
+        type: "mystatement"
+      });
+    });
+  });
 });
