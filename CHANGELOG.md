@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.2
+*2019-08-01*
+* Updated 3rd party dependencies to address their vulnerabilities
+
 ## Version 1.0.1
 *2018-11-02*
 * Removed esprima specific source position info when missing handlers are detected.

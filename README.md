@@ -14,7 +14,6 @@ import createTranspiler from "trastpiler";
 const tree = esprima.parse(javascriptCode);
 
 // Create a <AST-type, callback> hashmap for the supported declarations, statements and expressions.
-// The WhileStatement below will transpile down to LUA.
 const mappers = {
   WhileStatement: ({ body, test }, { transpile }) =>
     `while ${transpile(test)} do
@@ -30,22 +29,22 @@ const transpile = createTranspiler({ mappers });
 const transpiledCode = transpile(tree.body);
 ```
 
-## Options
+## Arguments
 | Property              | Type                      | Description |
 |-----------------------|---------------------------|-------------|
 | configuration         | object                    |             |
-| &ndash; mappers       | HashMap<string, function> | Key-value pairs of declaration/expression/statement type and function to process the AST node. |
-| &ndash; initialScope  | object                    | Initial data to use for the scope. |
+| &nbsp;&nbsp;&nbsp;&nbsp;mappers       | HashMap<string, function> | Key-value pairs of a declaration/expression/statement type and function to process the AST node. |
+| &nbsp;&nbsp;&nbsp;&nbsp;initialScope  | object                    | Initial data to use for the scope. |
 
-## Interface
+## Declaration/Expression/Statement Interface
 A declaration, expression or statement must have the following signature:
 ```js
 /**
- * @param {ASTNode} node AST node
- * @param {{ transpile, scope }} [object] References to the current scope and transpiler function - optional.
+ * @param {object} node AST node. Nodes must atleast have a `type` property
+ * @param {{ transpile, scope }} references References to the current scope and transpiler function - optional.
  * @return {string} transpiled node
  */
-function myExpression (node, { transpile, scope }) {
+function expressionTypeName (node, { transpile, scope }) {
   // Do stuff relevant for this expression (transpile child nodes, add variables to scope etc)
   return transpiledCode;
 }
