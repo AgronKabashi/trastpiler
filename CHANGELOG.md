@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.4
+*2019-09-29*
+* Add Github Action for validating PRs
+
 ## Version 1.0.3
 *2019-09-29*
 * 3rd party vulnerability update
