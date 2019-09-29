@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.3
+*2019-09-29*
+* 3rd party vulnerability update
+
 ## Version 1.0.2
 *2019-08-01*
 * Updated 3rd party dependencies to address their vulnerabilities
