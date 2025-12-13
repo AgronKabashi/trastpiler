@@ -37,17 +37,17 @@ const mappers = {
   // More advanced features
   definition: () => "",
   imageReference: () => "",
-  linkReference: () => ""
+  linkReference: () => "",
 };
 
-export default function markdownToHtml (content, options) {
+export default function markdownToHtml(content, options) {
   const ast = remark.parse(content);
   const transpile = createTranspiler({
     mappers,
     initialScopeData: {
       includeRoot: true,
-      ...options
-    }
+      ...options,
+    },
   });
 
   return transpile(ast);
