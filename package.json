@@ -1,20 +1,37 @@
 {
   "name": "trastpiler",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Agnostic transpiler for ASTs",
-  "main": "lib/trastpiler.js",
-  "module": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "rollup -c",
-    "prepublishOnly": "npm test && npm start",
-    "test": "NODE_ENV=test NODE_PATH=./src mocha"
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepublishOnly": "yarn test && yarn build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AgronKabashi/trastpiler"
   },
   "engines": {
-    "node": ">=8.6"
+    "node": ">=22"
   },
   "keywords": [
     "transpiler",
@@ -26,13 +43,9 @@
     "deepmerge": "^4.0.0"
   },
   "devDependencies": {
-    "@agronkabashi/eslint-config": "^1.1.0",
-    "assert": "^2.0.0",
-    "babel-eslint": "^10.0.2",
-    "eslint": "^6.1.0",
-    "esm": "^3.2.25",
-    "mocha": "^5.2.0",
-    "rollup": "^1.18.0",
-    "sinon": "^7.3.2"
+    "@types/node": "^22.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.15"
   }
 }
