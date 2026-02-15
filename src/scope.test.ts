@@ -1,32 +1,30 @@
-import assert from "assert";
-import createScope from "scope";
+import { describe, it, expect } from "vitest";
+import { createScope } from "./scope.js";
 
 describe("scope", () => {
-  let scope;
-
   it("should contain variables property", () => {
     const scope = createScope();
-    assert.deepStrictEqual(scope.get(), {
-      variables: {}
+    expect(scope.get()).toEqual({
+      variables: {},
     });
   });
 
   it("should accept an initial state for the scope", () => {
     const scope = createScope({
-      customProp: true
+      customProp: true,
     });
-    assert.deepStrictEqual(scope.get(), {
+    expect(scope.get()).toEqual({
       variables: {},
-      customProp: true
+      customProp: true,
     });
   });
 
   it("should be possible to mutate current scope layer", () => {
     const scope = createScope();
-    scope.get().customProp = true
-    assert.deepStrictEqual(scope.get(), {
+    scope.get().customProp = true;
+    expect(scope.get()).toEqual({
       variables: {},
-      customProp: true
+      customProp: true,
     });
   });
 
@@ -34,10 +32,10 @@ describe("scope", () => {
     const scope = createScope();
     scope.get().variables.customVariable = true;
 
-    assert.deepStrictEqual(scope.get(), {
+    expect(scope.get()).toEqual({
       variables: {
-        customVariable: true
-      }
+        customVariable: true,
+      },
     });
   });
 
@@ -46,21 +44,21 @@ describe("scope", () => {
       const scope = createScope({
         customProp: true,
         variables: {
-          customVariable: true
-        }
+          customVariable: true,
+        },
       });
 
-      assert.deepStrictEqual(scope.push(), {
+      expect(scope.push()).toEqual({
         variables: {
-          customVariable: true
+          customVariable: true,
         },
-        customProp: true
+        customProp: true,
       });
     });
 
     it("should not affect parent scope when mutating current scope directly", () => {
       const scope = createScope({
-        customProp: true
+        customProp: true,
       });
 
       const newScope = scope.push();
@@ -68,9 +66,9 @@ describe("scope", () => {
       newScope.variables.customVariable = false;
       scope.pop();
 
-      assert.deepStrictEqual(scope.push(), {
+      expect(scope.push()).toEqual({
         variables: {},
-        customProp: true
+        customProp: true,
       });
     });
 
@@ -78,13 +76,13 @@ describe("scope", () => {
       const scope = createScope();
 
       scope.push({
-        customProp: false
+        customProp: false,
       });
 
       scope.pop();
 
-      assert.deepStrictEqual(scope.push(), {
-        variables: {}
+      expect(scope.push()).toEqual({
+        variables: {},
       });
     });
   });

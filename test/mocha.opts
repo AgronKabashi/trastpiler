@@ -1,4 +1,0 @@
---colors
---require esm
---recursive
-test/**/*.js
